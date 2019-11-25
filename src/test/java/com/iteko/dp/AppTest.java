@@ -1,8 +1,10 @@
 package com.iteko.dp;
 
+import com.iteko.dp.client.AuthDTOClient;
 import com.iteko.dp.client.UserDTOClient;
 import com.iteko.dp.dto.UserDTO;
 import com.iteko.dp.enumeration.Role;
+import feign.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,10 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -23,8 +25,14 @@ import static org.junit.Assert.assertTrue;
 @RunWith(JUnit4.class)
 public class AppTest {
 
-    @NotNull
+    @Nullable
     private UserDTOClient userDTOClient;
+
+    @Nullable
+    private AuthDTOClient authDTOClient;
+
+    @Nullable
+    private Response response;
 
     @NotNull
     private final UserDTO userDTO = new UserDTO();
@@ -32,15 +40,30 @@ public class AppTest {
     @Before
     public void setup() {
         userDTOClient = new UserControllerFeignClientBuilder().getUserDTOClient();
+        authDTOClient = new UserControllerFeignClientBuilder().getAuthDTOClient();
+        response = authDTOClient.auth("login", "password");
         userDTO.setUuid(UUID.randomUUID().toString());
         userDTO.setLogin("test");
         userDTO.setPassword("test");
         userDTO.setRoles(Arrays.asList(Role.TEACHER, Role.ADMIN));
     }
 
+//    @Test
+//    public void auth() {
+//        Response response1 = authDTOClient.auth("login", "password");
+//        Map<String, Collection<String>> headers = response1.headers();
+//        for (String s : headers.keySet()) {
+//            System.out.println(s);
+//        }
+//    }
+
     @Test
     public void getAllUser() {
-        @NotNull List<UserDTO> userDTOS = userDTOClient.findAll();
+        Map<String, Collection<String>> headers = response.headers();
+        Collection<String> strings = headers.get("Set-cookie");
+        Optional<String> first = strings.stream().findFirst();
+        String s = first.orElse("");
+        @NotNull List<UserDTO> userDTOS = userDTOClient.findAll(s);
         assertTrue(userDTOS.size() > 0);
         log.info("{}", userDTOS);
     }
@@ -69,7 +92,7 @@ public class AppTest {
     @Test
     public void removeAllUser() {
         userDTOClient.removeAll();
-        @NotNull final List<UserDTO> userDTOS = userDTOClient.findAll();
+        @NotNull final List<UserDTO> userDTOS = userDTOClient.findAll("");
         assertEquals(0, userDTOS.size());
     }
 

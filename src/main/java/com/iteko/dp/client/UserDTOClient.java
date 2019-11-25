@@ -20,15 +20,15 @@ public interface UserDTOClient {
     @Headers("Content-Type: application/json")
     void remove(@Param("id") String id);
 
-    @RequestLine("GET")
-    List<UserDTO> findAll();
+    @RequestLine("GET /findAll")
+    @Headers("Cookie: {cookie}")
+    List<UserDTO> findAll(@Param("cookie") String cookie);
 
     @RequestLine("PUT /mergeAll")
     @Headers("Content-Type: application/json")
     void mergeAll(List<UserDTO> userDTOList);
 
     @RequestLine("DELETE /removeAll")
-    @Headers("Content-Type: application/json")
     void removeAll();
 
 }
