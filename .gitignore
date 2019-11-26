@@ -6,7 +6,6 @@ out/
 *.ipr
 *.iws
 target/
-src/test/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -23,3 +22,4 @@ buildNumber.properties
 /mvnw
 /mvnw.cmdv
 /mvnw.cmd
+/src/test/
