@@ -1,7 +1,7 @@
 package com.iteko.dp.enumeration;
 
 public enum Role {
-    INTERN,
+    STUDENT,
     CANDIDATE,
     ADMIN,
     TEACHER

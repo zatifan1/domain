@@ -48,14 +48,6 @@ public class AppTest {
         userDTO.setRoles(Arrays.asList(Role.TEACHER, Role.ADMIN));
     }
 
-//    @Test
-//    public void auth() {
-//        Response response1 = authDTOClient.auth("login", "password");
-//        Map<String, Collection<String>> headers = response1.headers();
-//        for (String s : headers.keySet()) {
-//            System.out.println(s);
-//        }
-//    }
 
     @Test
     public void getAllUser() {
@@ -68,32 +60,32 @@ public class AppTest {
         log.info("{}", userDTOS);
     }
 
-    @Test
-    public void getUserById() {
-        @NotNull final UserDTO userDTO = userDTOClient.findById("client_id");
-        Assert.assertEquals(userDTO.getLogin(), "login");
-    }
-
-    @Test
-    public void createUser() {
-        userDTOClient.merge(userDTO);
-        @Nullable final UserDTO newUserDTO = userDTOClient.findById(userDTO.getUuid());
-        if (newUserDTO != null) Assert.assertEquals(newUserDTO.getLogin(), "test");
-        else Assert.fail("UserDTO is null.");
-    }
-
-    @Test
-    public void removeUser() {
-        userDTOClient.remove(userDTO.getUuid());
-        @Nullable final UserDTO newUserDTO = userDTOClient.findById(userDTO.getUuid());
-        Assert.assertNull(newUserDTO);
-    }
-
-    @Test
-    public void removeAllUser() {
-        userDTOClient.removeAll();
-        @NotNull final List<UserDTO> userDTOS = userDTOClient.findAll("");
-        assertEquals(0, userDTOS.size());
-    }
+//    @Test
+//    public void getUserById() {
+//        @NotNull final UserDTO userDTO = userDTOClient.findById("client_id");
+//        Assert.assertEquals(userDTO.getLogin(), "login");
+//    }
+//
+//    @Test
+//    public void createUser() {
+//        userDTOClient.merge(userDTO);
+//        @Nullable final UserDTO newUserDTO = userDTOClient.findById(userDTO.getUuid());
+//        if (newUserDTO != null) Assert.assertEquals(newUserDTO.getLogin(), "test");
+//        else Assert.fail("UserDTO is null.");
+//    }
+//
+//    @Test
+//    public void removeUser() {
+//        userDTOClient.remove(userDTO.getUuid());
+//        @Nullable final UserDTO newUserDTO = userDTOClient.findById(userDTO.getUuid());
+//        Assert.assertNull(newUserDTO);
+//    }
+//
+//    @Test
+//    public void removeAllUser() {
+//        userDTOClient.removeAll();
+//        @NotNull final List<UserDTO> userDTOS = userDTOClient.findAll("");
+//        assertEquals(0, userDTOS.size());
+//    }
 
 }

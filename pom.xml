@@ -103,6 +103,7 @@
 
     <build>
         <plugins>
+            <!--КОНФИГУРАЦИЯ ПЛАГИНА ДЛЯ КОПИРОВАНИЯ СБОРКИ-->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
@@ -140,7 +141,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--КОНФИГУРАЦИЯ ПЛАГИНА ДЛЯ КОПИРОВАНИЯ СБОРКИ-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
