@@ -1,6 +1,6 @@
 package com.iteko.dp.dto;
 
-import com.iteko.dp.enumeration.Role;
+import com.iteko.dp.enumeration.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,10 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDTO {
-
-    @Nullable
-    private String uuid;
+public class UserDTO extends AbstractDTO{
 
     @Nullable
     private String login;
@@ -25,6 +22,6 @@ public class UserDTO {
     private String password;
 
     @NotNull
-    private List<Role> roles = new ArrayList<>();
+    private List<RoleType> roles = new ArrayList<>();
 
 }

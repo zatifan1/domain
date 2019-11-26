@@ -7,28 +7,28 @@ import feign.RequestLine;
 
 import java.util.List;
 
-public interface UserDTOClient {
+@Headers("Cookie: {cookie}")
+public interface UserClient {
 
     @RequestLine("PUT /merge")
     @Headers("Content-Type: application/json")
-    void merge(UserDTO userDTO);
+    void merge(@Param("cookie") String cookie, UserDTO userDTO);
 
     @RequestLine("GET /find/{id}")
-    UserDTO findById(@Param("id") String id);
+    UserDTO findById(@Param("cookie") String cookie, @Param("id") String id);
 
     @RequestLine("DELETE /remove/{id}")
     @Headers("Content-Type: application/json")
-    void remove(@Param("id") String id);
+    void remove(@Param("cookie") String cookie, @Param("id") String id);
 
     @RequestLine("GET /findAll")
-    @Headers("Cookie: {cookie}")
     List<UserDTO> findAll(@Param("cookie") String cookie);
 
     @RequestLine("PUT /mergeAll")
     @Headers("Content-Type: application/json")
-    void mergeAll(List<UserDTO> userDTOList);
+    void mergeAll(@Param("cookie") String cookie, List<UserDTO> userDTOList);
 
     @RequestLine("DELETE /removeAll")
-    void removeAll();
+    void removeAll(@Param("cookie") String cookie);
 
 }

@@ -1,7 +1,8 @@
 package com.iteko.dp;
 
-import com.iteko.dp.client.AuthDTOClient;
-import com.iteko.dp.client.UserDTOClient;
+import com.iteko.dp.client.AuthClient;
+import com.iteko.dp.client.CandidateClient;
+import com.iteko.dp.client.UserClient;
 import feign.Feign;
 import feign.Logger;
 import feign.gson.GsonDecoder;
@@ -11,10 +12,11 @@ import feign.slf4j.Slf4jLogger;
 import lombok.Getter;
 
 @Getter
-public class UserControllerFeignClientBuilder {
+public class ControllerFeignClientBuilder {
 
-    private UserDTOClient userDTOClient = createClient(UserDTOClient.class, "http://localhost:8080/api/user");
-    private AuthDTOClient authDTOClient = createClient(AuthDTOClient.class, "http://localhost:8080/api");
+    private UserClient userClient = createClient(UserClient.class, "http://localhost:8080/api/user");
+    private AuthClient authClient = createClient(AuthClient.class, "http://localhost:8080/api");
+    private CandidateClient candidateClient = createClient(CandidateClient.class, "http://localhost:8080/api/");
 
     private static <T> T createClient(Class<T> type, String uri) {
         return Feign.builder()

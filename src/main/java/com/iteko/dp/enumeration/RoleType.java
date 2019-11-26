@@ -1,6 +1,6 @@
 package com.iteko.dp.enumeration;
 
-public enum Role {
+public enum RoleType {
     STUDENT,
     CANDIDATE,
     ADMIN,
