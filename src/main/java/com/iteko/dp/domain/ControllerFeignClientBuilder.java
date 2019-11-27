@@ -1,8 +1,9 @@
-package com.iteko.dp;
+package com.iteko.dp.domain;
 
-import com.iteko.dp.client.AuthClient;
-import com.iteko.dp.client.CandidateClient;
-import com.iteko.dp.client.UserClient;
+import com.iteko.dp.domain.client.AuthClient;
+import com.iteko.dp.domain.client.CandidateClient;
+import com.iteko.dp.domain.client.ManagerClient;
+import com.iteko.dp.domain.client.UserClient;
 import feign.Feign;
 import feign.Logger;
 import feign.gson.GsonDecoder;
@@ -17,6 +18,7 @@ public class ControllerFeignClientBuilder {
     private UserClient userClient = createClient(UserClient.class, "http://localhost:8080/api/user");
     private AuthClient authClient = createClient(AuthClient.class, "http://localhost:8080/api");
     private CandidateClient candidateClient = createClient(CandidateClient.class, "http://localhost:8080/api/");
+    private ManagerClient managerClient = createClient(ManagerClient.class, "http://localhost:8080/api/");
 
     private static <T> T createClient(Class<T> type, String uri) {
         return Feign.builder()
@@ -27,5 +29,4 @@ public class ControllerFeignClientBuilder {
                 .logLevel(Logger.Level.FULL)
                 .target(type, uri);
     }
-
 }

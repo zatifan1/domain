@@ -1,4 +1,4 @@
-package com.iteko.dp.enumeration;
+package com.iteko.dp.domain.enumeration;
 
 import org.jetbrains.annotations.NotNull;
 

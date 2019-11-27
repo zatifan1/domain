@@ -1,6 +1,6 @@
-package com.iteko.dp.client;
+package com.iteko.dp.domain.client;
 
-import com.iteko.dp.dto.UserDTO;
+import com.iteko.dp.domain.dto.UserDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
@@ -30,5 +30,4 @@ public interface UserClient {
 
     @RequestLine("DELETE /removeAll")
     void removeAll(@Param("cookie") String cookie);
-
 }

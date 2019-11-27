@@ -1,6 +1,6 @@
-package com.iteko.dp.dto;
+package com.iteko.dp.domain.dto;
 
-import com.iteko.dp.enumeration.RoleType;
+import com.iteko.dp.domain.enumeration.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,5 +23,4 @@ public class UserDTO extends AbstractDTO{
 
     @NotNull
     private List<RoleType> roles = new ArrayList<>();
-
 }

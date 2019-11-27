@@ -1,6 +1,6 @@
-package com.iteko.dp.client;
+package com.iteko.dp.domain.client;
 
-import com.iteko.dp.entity.Person;
+import com.iteko.dp.domain.dto.PersonDTO;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
@@ -29,6 +29,6 @@ public interface AuthClient {
     @Headers({"Content-type: application/json","userId: {id}"})
     void profileMerge(@Param("cookie") String cookie,
                       @Param("id") String id,
-                      Person person);
+                      PersonDTO person);
 
 }
