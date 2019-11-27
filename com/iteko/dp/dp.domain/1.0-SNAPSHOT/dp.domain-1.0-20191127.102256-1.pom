@@ -16,7 +16,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <feign.version>10.4.0</feign.version>
         <github.global.server>github</github.global.server>
-        <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <parent>
