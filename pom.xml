@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.iteko.dp</groupId>
+    <groupId>com.iteco.dp</groupId>
     <artifactId>dp.domain</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>dp.domain</name>
@@ -158,7 +158,7 @@
                 <configuration>
                     <artifactItems>
                         <artifactItem>
-                            <groupId>com.iteko.dp</groupId>
+                            <groupId>com.iteco.dp</groupId>
                             <artifactId>dp.domain</artifactId>
                             <version>1.0-SNAPSHOT</version>
                             <type>jar</type>
@@ -181,7 +181,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>../lib/</classpathPrefix>
-                            <mainClass>com.iteko.dp.App</mainClass>
+                            <mainClass>com.iteco.dp.App</mainClass>
                         </manifest>
                         <manifestEntries>
                             <buildNumber>${buildNumber}
