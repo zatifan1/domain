@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-  <groupId>com.iteko.dp</groupId>
+  <groupId>com.iteco.dp</groupId>
   <artifactId>dp.domain</artifactId>
   <versioning>
     <versions>
       <version>1.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20191127102256</lastUpdated>
+    <lastUpdated>20191127102939</lastUpdated>
   </versioning>
 </metadata>
