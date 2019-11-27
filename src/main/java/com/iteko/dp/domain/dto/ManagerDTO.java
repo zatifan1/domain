@@ -6,11 +6,6 @@ import org.jetbrains.annotations.Nullable;
 
 @Getter
 @Setter
-public class ManagerDTO extends AbstractDTO {
+public class ManagerDTO extends AbstractUserDTO {
 
-    @Nullable
-    private PersonDTO personDTO;
-
-    @Nullable
-    private UserDTO userDTO;
 }

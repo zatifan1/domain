@@ -6,6 +6,8 @@ import com.iteko.dp.domain.client.ManagerClient;
 import com.iteko.dp.domain.client.UserClient;
 import feign.Feign;
 import feign.Logger;
+import feign.RequestInterceptor;
+import feign.auth.BasicAuthRequestInterceptor;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
@@ -27,6 +29,12 @@ public class ControllerFeignClientBuilder {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(type))
                 .logLevel(Logger.Level.FULL)
+//                .requestInterceptor(basicAuthRequestInterceptor())
                 .target(type, uri);
     }
+
+//    public static RequestInterceptor basicAuthRequestInterceptor() {
+//        return new BasicAuthRequestInterceptor("login", "password");
+//    }
+
 }

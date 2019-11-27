@@ -11,9 +11,11 @@ public interface AuthClient {
 
     @RequestLine("POST /auth")
     @Headers({"Login: {login}", "Password: {password}"})
-    Response auth(@Param("cookie") String cookie,
-                  @Param("login") String login,
+    Response auth(@Param("login") String login,
                   @Param("password") String password);
+
+    @RequestLine("POST /auth")
+    Response auth1();
 
     @RequestLine("GET /logout")
     @Headers("userId: {id}")
@@ -26,7 +28,7 @@ public interface AuthClient {
                  @Param("id") String id);
 
     @RequestLine("PUT /profile/merge")
-    @Headers({"Content-type: application/json","userId: {id}"})
+    @Headers({"Content-type: application/json", "userId: {id}"})
     void profileMerge(@Param("cookie") String cookie,
                       @Param("id") String id,
                       PersonDTO person);

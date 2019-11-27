@@ -12,7 +12,7 @@ public interface ManagerClient {
 
     @RequestLine("PUT /manager/merge")
     @Headers("Content-Type: application/json")
-    ManagerDTO merge(/*@Param("cookie") String cookie,*/
+    ManagerDTO merge(@Param("cookie") String cookie,
                      ManagerDTO managerDTO);
 
     @RequestLine("PUT /manager/find/{id}")
@@ -30,4 +30,5 @@ public interface ManagerClient {
 
     @RequestLine("GET /manager/removeAll")
     void removeAll(@Param("cookie") String cookie);
+
 }
