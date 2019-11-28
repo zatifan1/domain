@@ -1,13 +1,12 @@
-package com.iteko.dp.domain;
+package com.iteco.dp.domain;
 
-import com.iteko.dp.domain.client.AuthClient;
-import com.iteko.dp.domain.client.CandidateClient;
-import com.iteko.dp.domain.client.ManagerClient;
-import com.iteko.dp.domain.client.UserClient;
+import com.iteco.dp.domain.client.AuthClient;
+import com.iteco.dp.domain.client.CandidateClient;
+import com.iteco.dp.domain.client.ManagerClient;
+import com.iteco.dp.domain.client.UserClient;
+import com.iteco.dp.domain.interceptor.CookieInterceptor;
 import feign.Feign;
 import feign.Logger;
-import feign.RequestInterceptor;
-import feign.auth.BasicAuthRequestInterceptor;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
@@ -29,12 +28,8 @@ public class ControllerFeignClientBuilder {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(type))
                 .logLevel(Logger.Level.FULL)
-//                .requestInterceptor(basicAuthRequestInterceptor())
+                .requestInterceptor(new CookieInterceptor())
                 .target(type, uri);
     }
-
-//    public static RequestInterceptor basicAuthRequestInterceptor() {
-//        return new BasicAuthRequestInterceptor("login", "password");
-//    }
 
 }

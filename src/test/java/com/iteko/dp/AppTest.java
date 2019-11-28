@@ -1,76 +1,63 @@
 package com.iteko.dp;
 
-import com.iteko.dp.domain.ControllerFeignClientBuilder;
-import com.iteko.dp.domain.client.AuthClient;
-import com.iteko.dp.domain.client.ManagerClient;
-import com.iteko.dp.domain.client.UserClient;
-import com.iteko.dp.domain.dto.ManagerDTO;
-import com.iteko.dp.domain.dto.PersonDTO;
-import com.iteko.dp.domain.dto.UserDTO;
-import com.iteko.dp.domain.enumeration.RoleType;
+import com.iteco.dp.domain.AuthResourceClient;
+import com.iteco.dp.domain.client.AuthClient;
+import com.iteco.dp.domain.client.ManagerClient;
+import com.iteco.dp.domain.client.UserClient;
+import com.iteco.dp.domain.dto.UserDTO;
 import feign.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.*;
-
-import static org.junit.Assert.assertTrue;
+import java.util.Collection;
+import java.util.List;
 
 @Slf4j
 @RunWith(JUnit4.class)
 public class AppTest {
 
-    @Nullable
+    @NotNull
     private UserClient userClient;
 
-    @Nullable
+    @NotNull
     private AuthClient authClient;
 
-    @Nullable
+    @NotNull
     private ManagerClient managerClient;
-
-    @Nullable
-    private String cookie;
 
     @NotNull
     private final UserDTO userDTO = new UserDTO();
 
-    @Before
-    public void setup() {
-        userClient = new ControllerFeignClientBuilder().getUserClient();
-        authClient = new ControllerFeignClientBuilder().getAuthClient();
-        managerClient = new ControllerFeignClientBuilder().getManagerClient();
-        Response response = authClient.auth("login", "password");
-        userDTO.setId(UUID.randomUUID().toString());
-        userDTO.setLogin("test");
-        userDTO.setPassword("test");
-        userDTO.setRoles(Arrays.asList(RoleType.TEACHER, RoleType.ADMIN));
-        Map<String, Collection<String>> headers = response.headers();
-        Collection<String> strings = headers.get("Set-cookie");
-        Optional<String> first = strings.stream().findFirst();
-        cookie = first.orElse("");
-    }
+//    @Before
+//    public void setup() {
+//        authClient = AuthResourceClient.getAuthInstance("http://localhost:8080/api");
+//        Response response = authClient.auth("login", "1234");
+//        Map<String, Collection<String>> headers1 = response.headers();
+//        Collection<String> strings = headers1.get("Set-cookie");
+//        Optional<String> first = strings.stream().findFirst();
+//        String cookie = first.orElse("");
+//        System.out.println("Cookie: " + cookie);
+//    }
 
 
     @Test
     public void getAllUser() {
-        @NotNull List<UserDTO> userDTOS = userClient.findAll(cookie);
-        assertTrue(userDTOS.size() > 0);
-        log.info("{}", userDTOS);
-        ManagerDTO managerDTO = new ManagerDTO();
-        managerDTO.setUserDTO(userDTOS.get(0));
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.setUser(userDTOS.get(0));
-        managerDTO.setPersonDTO(personDTO);
-        Assert.assertEquals(managerDTO.getId(), managerClient.merge(cookie, managerDTO).getId());
+        authClient = AuthResourceClient.getAuthInstance("http://localhost:8080/api");
+        userClient = AuthResourceClient.getUserInstance("http://localhost:8080/api");
+        Response response = authClient.auth("login", "1234");
+        Collection<String> strings = response.headers().get("Set-Cookie");
+        for (String string : strings) {
+            System.out.println(string);
+            List<UserDTO> userDTOS = userClient.findAll(string);
+            System.out.println(userDTOS.get(0).getLogin());
+            Assert.assertNotNull(userDTOS.get(0));
+        }
+        System.out.println("Cookie: " + response);
     }
-
 
 
 //    @Test

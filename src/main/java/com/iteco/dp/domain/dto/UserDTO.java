@@ -1,6 +1,6 @@
-package com.iteko.dp.domain.dto;
+package com.iteco.dp.domain.dto;
 
-import com.iteko.dp.domain.enumeration.RoleType;
+import com.iteco.dp.domain.enumeration.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,9 +1,10 @@
-package com.iteko.dp.domain.dto;
+package com.iteco.dp.domain.dto;
 
-import com.iteko.dp.domain.enumeration.Sex;
+import com.iteco.dp.domain.enumeration.Sex;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class PersonDTO extends AbstractDTO {
     private String lastName;
 
     @Nullable
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date birthDate;
 
     @Nullable

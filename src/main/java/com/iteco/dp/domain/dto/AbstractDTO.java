@@ -1,4 +1,4 @@
-package com.iteko.dp.domain.dto;
+package com.iteco.dp.domain.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

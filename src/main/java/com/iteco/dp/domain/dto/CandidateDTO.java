@@ -1,4 +1,4 @@
-package com.iteko.dp.domain.dto;
+package com.iteco.dp.domain.dto;
 
 public class CandidateDTO extends AbstractUserDTO {
 }
