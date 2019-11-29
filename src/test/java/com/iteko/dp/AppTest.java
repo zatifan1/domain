@@ -30,7 +30,7 @@ public class AppTest {
     public void getAllUser() {
         authClient = AuthResourceClient.getAuthInstance("http://localhost:8080/api");
         userClient = AuthResourceClient.getUserInstance("http://localhost:8080/api");
-        Response response = authClient.auth("login", "1234");
+        Response response = authClient.auth("admin", "admin");
         Collection<String> strings = response.headers().get("Set-Cookie");
         String cookie = "";
         for (String string : strings) {

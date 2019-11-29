@@ -21,6 +21,4 @@ public class UserDTO extends AbstractDTO{
     @Nullable
     private String password;
 
-    @NotNull
-    private List<RoleType> roles = new ArrayList<>();
 }
