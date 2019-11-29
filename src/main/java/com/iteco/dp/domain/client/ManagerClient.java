@@ -11,22 +11,23 @@ import java.util.List;
 public interface ManagerClient {
 
     @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    ManagerDTO merge(@RequestBody ManagerDTO managerDTO);
+    ManagerDTO merge(@RequestHeader("Cookie") String cookie, @RequestBody ManagerDTO managerDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
-    ManagerDTO findById(@PathVariable("id") String id);
+    ManagerDTO findById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
 
     @DeleteMapping(value = "/remove/{id}", consumes = "application/json")
-    ManagerDTO removeById(@PathVariable("id") String id);
+    ManagerDTO removeById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
-    List<ManagerDTO> findAll();
+    List<ManagerDTO> findAll(@RequestHeader("Cookie") String cookie);
 
     @DeleteMapping(value = "/removeAll")
-    void removeAll();
+    void removeAll(@RequestHeader("Cookie") String cookie);
 
     @PostMapping(value = "/register", consumes = "application/json")
-    ManagerDTO register(@RequestHeader("login") String login,
+    ManagerDTO register(@RequestHeader("Cookie") String cookie,
+                        @RequestHeader("login") String login,
                         @RequestHeader("password") String password);
 
 }

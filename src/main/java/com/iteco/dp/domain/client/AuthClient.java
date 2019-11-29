@@ -14,12 +14,12 @@ public interface AuthClient {
                   @RequestHeader("password") String password);
 
     @GetMapping(value = "/logout")
-    void logout(@RequestHeader("id") String id);
+    void logout(@RequestHeader("Cookie") String cookie, @RequestHeader("id") String id);
 
     @GetMapping(value = "/profile")
     PersonDTO profile(@RequestHeader("Cookie") String cookie);
 
     @PutMapping(value = "/profile/merge", produces = "application/json")
-    void profileMerge(@RequestBody PersonDTO person);
+    void profileMerge(@RequestHeader("Cookie") String cookie, @RequestBody PersonDTO person);
 
 }

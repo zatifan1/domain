@@ -11,20 +11,24 @@ import java.util.List;
 public interface UserClient {
 
     @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    void merge(@RequestBody UserDTO userDTO);
+    void merge(@RequestHeader("Cookie") String cookie,
+               @RequestBody UserDTO userDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
-    UserDTO findById(@PathVariable("id") String id);
+    UserDTO findById(@RequestHeader("Cookie") String cookie,
+                     @PathVariable("id") String id);
 
     @DeleteMapping(value = "/remove/{id}")
-    void remove(@PathVariable("id") String id);
+    void remove(@RequestHeader("Cookie") String cookie,
+                @PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
     List<UserDTO> findAll(@RequestHeader("Cookie") String cookie);
 
     @PutMapping(value = "/mergeAll", produces = "application/json")
-    void mergeAll(List<UserDTO> userDTOList);
+    void mergeAll(@RequestHeader("Cookie") String cookie,
+                  List<UserDTO> userDTOList);
 
     @DeleteMapping(value = "/removeAll")
-    void removeAll();
+    void removeAll(@RequestHeader("Cookie") String cookie);
 }

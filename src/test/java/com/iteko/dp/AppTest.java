@@ -53,7 +53,7 @@ public class AppTest {
         for (String string : strings) {
             System.out.println(string);
             List<UserDTO> userDTOS = userClient.findAll(string);
-            System.out.println(userDTOS.get(0).getLogin());
+            System.out.println(userDTOS.get(0).getPassword());
             Assert.assertNotNull(userDTOS.get(0));
         }
         System.out.println("Cookie: " + response);
