@@ -1,14 +1,9 @@
 package com.iteco.dp.domain.dto;
 
-import com.iteco.dp.domain.enumeration.RoleType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter

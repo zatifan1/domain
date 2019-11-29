@@ -11,7 +11,7 @@ import java.util.List;
 public interface ManagerClient {
 
     @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
-    ManagerDTO merge(@RequestHeader("Cookie") String cookie, @RequestBody ManagerDTO managerDTO);
+    ManagerDTO create(@RequestHeader("Cookie") String cookie, @RequestBody ManagerDTO managerDTO);
 
     @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
     ManagerDTO update(@RequestHeader("Cookie") String cookie, @RequestBody ManagerDTO managerDTO);
