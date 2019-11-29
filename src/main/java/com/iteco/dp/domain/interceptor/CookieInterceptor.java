@@ -8,7 +8,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 public class CookieInterceptor implements RequestInterceptor {
-    private static final String COOKIE = "Accept-Language";
+    private static final String COOKIE = "Cookie";
 
     @Override
     public void apply(RequestTemplate requestTemplate) {

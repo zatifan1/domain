@@ -50,12 +50,14 @@ public class AppTest {
         userClient = AuthResourceClient.getUserInstance("http://localhost:8080/api");
         Response response = authClient.auth("login", "1234");
         Collection<String> strings = response.headers().get("Set-Cookie");
+        String cookie = "";
         for (String string : strings) {
-            System.out.println(string);
-            List<UserDTO> userDTOS = userClient.findAll(string);
-            System.out.println(userDTOS.get(0).getPassword());
-            Assert.assertNotNull(userDTOS.get(0));
+            cookie = string;
         }
+        System.out.println(cookie);
+        List<UserDTO> userDTOS = userClient.findAll(cookie);
+        System.out.println(userDTOS.get(0).getLogin());
+        Assert.assertNotNull(userDTOS.get(0));
         System.out.println("Cookie: " + response);
     }
 

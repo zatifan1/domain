@@ -7,9 +7,8 @@ import com.iteco.dp.domain.client.UserClient;
 import com.iteco.dp.domain.interceptor.CookieInterceptor;
 import feign.Feign;
 import feign.Logger;
-import feign.gson.GsonDecoder;
-import feign.gson.GsonEncoder;
-import feign.okhttp.OkHttpClient;
+//import feign.gson.GsonDecoder;
+//import feign.gson.GsonEncoder;
 import feign.slf4j.Slf4jLogger;
 import lombok.Getter;
 
@@ -23,9 +22,9 @@ public class ControllerFeignClientBuilder {
 
     private static <T> T createClient(Class<T> type, String uri) {
         return Feign.builder()
-                .client(new OkHttpClient())
-                .encoder(new GsonEncoder())
-                .decoder(new GsonDecoder())
+//                .client(new OkHttpClient())
+//                .encoder(new GsonEncoder())
+//                .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(type))
                 .logLevel(Logger.Level.FULL)
                 .requestInterceptor(new CookieInterceptor())
