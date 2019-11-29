@@ -1,9 +1,7 @@
 package com.iteco.dp.domain;
 
 
-import com.iteco.dp.domain.client.AuthClient;
-import com.iteco.dp.domain.client.ManagerClient;
-import com.iteco.dp.domain.client.UserClient;
+import com.iteco.dp.domain.client.*;
 import com.iteco.dp.domain.interceptor.CookieInterceptor;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
@@ -35,6 +33,30 @@ public class AuthResourceClient {
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
                 .target(UserClient.class, baseUrl);
+    }
+
+    public static CandidateClient getCandidateInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(CandidateClient.class, baseUrl);
+    }
+
+    public static InterviewClient getInterviewInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(InterviewClient.class, baseUrl);
+    }
+
+    public static TeacherClient getTeacherInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(TeacherClient.class, baseUrl);
     }
 }
 
