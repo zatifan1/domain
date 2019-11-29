@@ -11,21 +11,22 @@ import java.util.List;
 @RequestMapping(value = "/candidate")
 public interface CandidateClient {
 
-    @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    CandidateDTO merge(@RequestHeader("Cookie") String cookie, @RequestBody CandidateDTO candidateDTO);
+    @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
+    CandidateDTO create(@RequestHeader("Cookie") String cookie, @RequestBody CandidateDTO candidateDTO);
+
+    @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
+    CandidateDTO update(@RequestHeader("Cookie") String cookie, @RequestBody CandidateDTO candidateDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
     CandidateDTO findById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
 
-    @DeleteMapping(value = "/remove/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     CandidateDTO removeById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
     List<CandidateDTO> findAll(@RequestHeader("Cookie") String cookie);
 
-    @DeleteMapping(value = "/removeAll")
-    void removeAll(@RequestHeader("Cookie") String cookie);
+    @DeleteMapping(value = "/deleteAll")
+    void deleteAll(@RequestHeader("Cookie") String cookie);
 
-    @GetMapping(value = "/interview")
-    InterviewDTO interview(@RequestHeader("Cookie") String cookie);
 }

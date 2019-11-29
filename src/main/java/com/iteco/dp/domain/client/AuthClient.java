@@ -18,7 +18,7 @@ public interface AuthClient {
     @GetMapping(value = "/profile")
     PersonDTO profile(@RequestHeader("Cookie") String cookie);
 
-    @PutMapping(value = "/profile/merge", produces = "application/json")
+    @PutMapping(value = "/profile", produces = "application/json")
     void profileMerge(@RequestHeader("Cookie") String cookie, @RequestBody PersonDTO person);
 
 }
