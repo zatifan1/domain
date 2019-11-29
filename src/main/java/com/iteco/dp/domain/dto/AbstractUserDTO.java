@@ -13,7 +13,4 @@ public class AbstractUserDTO extends AbstractDTO {
     @Nullable
     private PersonDTO personDTO;
 
-    @Nullable
-    private UserDTO userDTO;
-
 }

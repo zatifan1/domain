@@ -32,5 +32,5 @@ public class PersonDTO extends AbstractDTO {
     private Sex sex;
 
     @Nullable
-    private UserDTO user;
+    private UserDTO userDTO;
 }
