@@ -2,7 +2,7 @@ package com.iteco.dp.domain.client;
 
 import com.iteco.dp.domain.dto.CandidateDTO;
 import com.iteco.dp.domain.dto.InterviewDTO;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

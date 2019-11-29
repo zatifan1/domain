@@ -20,7 +20,7 @@ public class CookieInterceptor implements RequestInterceptor {
         if (request == null) {
             return;
         }
-        String cookie = request.getHeader("Set-cookie");
+        String cookie = request.getHeader("Set-Cookie");
         if (cookie == null) {
             return;
         }
