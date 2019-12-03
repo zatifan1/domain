@@ -1,6 +1,5 @@
 package com.iteco.dp.domain.client;
 
-
 import com.iteco.dp.domain.dto.InterviewDTO;
 import com.iteco.dp.domain.dto.TeacherDTO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -12,22 +11,18 @@ import java.util.List;
 @RequestMapping(value = "/teacher")
 public interface TeacherClient {
 
-    @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    TeacherDTO merge(@RequestBody TeacherDTO teacherDTO);
+    @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
+    TeacherDTO create(@RequestBody TeacherDTO teacherDTO);
+
+    @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
+    TeacherDTO update(@RequestBody TeacherDTO teacherDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
     TeacherDTO findById(@PathVariable("id") String id);
 
-    @DeleteMapping(value = "/remove/{id}", consumes = "application/json")
-    TeacherDTO removeById(@PathVariable("id") String id);
-
     @GetMapping(value = "/findAll", consumes = "application/json")
     List<TeacherDTO> findAll();
 
-    @GetMapping(value = "/interview", consumes = "application/json")
-    InterviewDTO interview();
-
-    @PutMapping(value = "/interview/create", produces = "application/json", consumes = "application/json")
-    TeacherDTO interviewCreate(@RequestBody TeacherDTO teacherDTO);
-
+    @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
+    TeacherDTO deleteById(@PathVariable("id") String id);
 }

@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClassroomDTO extends AbstractDTO{
+public class ClassroomDTO extends AbstractDTO {
 
     private String number;
-
 }

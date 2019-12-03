@@ -3,6 +3,7 @@ package com.iteco.dp.domain.dto;
 import com.iteco.dp.domain.enumeration.Sex;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
