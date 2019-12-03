@@ -12,21 +12,21 @@ import java.util.List;
 public interface CandidateClient {
 
     @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
-    CandidateDTO create(@RequestHeader("Cookie") String cookie, @RequestBody CandidateDTO candidateDTO);
+    CandidateDTO create(@RequestBody CandidateDTO candidateDTO);
 
     @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
-    CandidateDTO update(@RequestHeader("Cookie") String cookie, @RequestBody CandidateDTO candidateDTO);
+    CandidateDTO update(@RequestBody CandidateDTO candidateDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
-    CandidateDTO findById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
+    CandidateDTO findById(@PathVariable("id") String id);
 
     @DeleteMapping(value = "/delete/{id}")
-    CandidateDTO removeById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
+    CandidateDTO deleteById(@PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
-    List<CandidateDTO> findAll(@RequestHeader("Cookie") String cookie);
+    List<CandidateDTO> findAll();
 
     @DeleteMapping(value = "/deleteAll")
-    void deleteAll(@RequestHeader("Cookie") String cookie);
+    void deleteAll();
 
 }

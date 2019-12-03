@@ -13,28 +13,21 @@ import java.util.List;
 public interface TeacherClient {
 
     @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    TeacherDTO merge(@RequestHeader("Cookie") String cookie,
-                     @RequestBody TeacherDTO teacherDTO);
+    TeacherDTO merge(@RequestBody TeacherDTO teacherDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
-    TeacherDTO findById(@RequestHeader("Cookie") String cookie,
-                        @PathVariable("id") String id);
+    TeacherDTO findById(@PathVariable("id") String id);
 
     @DeleteMapping(value = "/remove/{id}", consumes = "application/json")
-    TeacherDTO removeById(@RequestHeader("Cookie") String cookie,
-                          @PathVariable("id") String id);
+    TeacherDTO removeById(@PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
-    List<TeacherDTO> findAll(@RequestHeader("Cookie") String cookie);
-
-    @DeleteMapping(value = "/removeAll")
-    void removeAll(@RequestHeader("Cookie") String cookie);
+    List<TeacherDTO> findAll();
 
     @GetMapping(value = "/interview", consumes = "application/json")
-    InterviewDTO interview(@RequestHeader("Cookie") String cookie);
+    InterviewDTO interview();
 
     @PutMapping(value = "/interview/create", produces = "application/json", consumes = "application/json")
-    TeacherDTO interviewCreate(@RequestHeader("Cookie") String cookie,
-                               @RequestBody TeacherDTO teacherDTO);
+    TeacherDTO interviewCreate(@RequestBody TeacherDTO teacherDTO);
 
 }
