@@ -105,120 +105,6 @@
 
     <build>
         <plugins>
-<!--            &lt;!&ndash;КОНФИГУРАЦИЯ ПЛАГИНА ДЛЯ КОПИРОВАНИЯ СБОРКИ&ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <descriptorRefs>-->
-<!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
-<!--                    </descriptorRefs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>copy-dependencies</id>-->
-<!--                        <phase>prepare-package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>copy-dependencies</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <outputDirectory>-->
-<!--                                ${project.build.directory}/dp-domain/lib-->
-<!--                            </outputDirectory>-->
-<!--                            <overWriteReleases>false</overWriteReleases>-->
-<!--                            <overWriteSnapshots>false</overWriteSnapshots>-->
-<!--                            <overWriteIfNewer>true</overWriteIfNewer>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                <version>3.0.1</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>copy</id>-->
-<!--                        <phase>install</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>copy</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <artifactItems>-->
-<!--                        <artifactItem>-->
-<!--                            <groupId>com.iteco.dp</groupId>-->
-<!--                            <artifactId>dp.domain</artifactId>-->
-<!--                            <version>1.0-SNAPSHOT</version>-->
-<!--                            <type>jar</type>-->
-<!--                            <overWrite>true</overWrite>-->
-<!--                            <outputDirectory>-->
-<!--                                ${project.build.directory}/dp-domain/bin-->
-<!--                            </outputDirectory>-->
-<!--                            <destFileName>dp-domain.jar</destFileName>-->
-<!--                        </artifactItem>-->
-<!--                    </artifactItems>-->
-<!--                    <overWriteReleases>false</overWriteReleases>-->
-<!--                    <overWriteSnapshots>true</overWriteSnapshots>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <addClasspath>true</addClasspath>-->
-<!--                            <classpathPrefix>../lib/</classpathPrefix>-->
-<!--                            <mainClass>com.iteco.dp.App</mainClass>-->
-<!--                        </manifest>-->
-<!--                        <manifestEntries>-->
-<!--                            <buildNumber>${buildNumber}-->
-<!--                            </buildNumber>-->
-<!--                            <developer>-->
-<!--                                Zakir-->
-<!--                            </developer>-->
-<!--                        </manifestEntries>-->
-<!--                    </archive>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>buildnumber-maven-plugin</artifactId>-->
-<!--                <version>1.4</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>buildNumber</id>-->
-<!--                        <phase>validate</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>create</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <format>{0,number}</format>-->
-<!--                    <items>-->
-<!--                        <item>buildNumber</item>-->
-<!--                    </items>-->
-<!--                    <doCheck>false</doCheck>-->
-<!--                    <doUpdate>false</doUpdate>-->
-<!--                    <revisionOnScmFailure>-->
-<!--                        unknownBuild-->
-<!--                    </revisionOnScmFailure>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <!-- Для создания Maven репозитория -->
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -263,15 +149,6 @@
             </properties>
         </profile>
     </profiles>
-
-<!--    <scm>-->
-<!--        <connection>scm:svn:http://127.0.0.1/dummy</connection>-->
-<!--        <developerConnection>-->
-<!--            scm:svn:https://127.0.0.1/dummy-->
-<!--        </developerConnection>-->
-<!--        <tag>HEAD</tag>-->
-<!--        <url>http://127.0.0.1/dummy</url>-->
-<!--    </scm>-->
 
     <distributionManagement>
         <repository>
