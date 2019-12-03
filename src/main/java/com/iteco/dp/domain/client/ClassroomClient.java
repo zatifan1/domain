@@ -24,8 +24,4 @@ public interface ClassroomClient {
 
     @GetMapping(value = "/findAll", consumes = "application/json")
     List<ClassroomDTO> findAll();
-
-    @DeleteMapping(value = "/deleteAll")
-    void deleteAll();
-
 }
