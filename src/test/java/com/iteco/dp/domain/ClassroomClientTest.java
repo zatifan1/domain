@@ -44,7 +44,7 @@ public class ClassroomClientTest {
             classroomDTOS.add(classroomDTO);
             classroomClient.create(classroomDTO);
         });
-        Assert.assertEquals(classroomDTOS.size(), classroomClient.findAll().size());
+        Assert.assertTrue(classroomDTOS.size() <= classroomClient.findAll().size());
     }
 
     @Test
