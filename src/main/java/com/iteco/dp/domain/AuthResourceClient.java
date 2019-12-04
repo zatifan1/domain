@@ -55,4 +55,13 @@ public class AuthResourceClient {
                 .decoder(new JacksonDecoder())
                 .target(ClassroomClient.class, baseUrl);
     }
+
+    public static LessonClient getLessonInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(LessonClient.class, baseUrl);
+    }
+
 }

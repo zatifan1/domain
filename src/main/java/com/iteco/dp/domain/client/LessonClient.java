@@ -11,21 +11,18 @@ import java.util.List;
 public interface LessonClient {
 
     @GetMapping(value = "/findAll", consumes = "application/json")
-    List<LessonDTO> findAll(@RequestHeader("Cookie") String cookie);
+    List<LessonDTO> findAll();
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
-    LessonDTO findById(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
+    LessonDTO findById(@PathVariable("id") String id);
 
     @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
-    LessonDTO create(@RequestHeader("Cookie") String cookie, @RequestBody LessonDTO lessonDTO);
+    LessonDTO create(@RequestBody LessonDTO lessonDTO);
 
     @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
-    LessonDTO update(@RequestHeader("Cookie") String cookie, @RequestBody LessonDTO lessonDTO);
+    LessonDTO update(@RequestBody LessonDTO lessonDTO);
 
     @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
-    LessonDTO delete(@RequestHeader("Cookie") String cookie, @PathVariable("id") String id);
-
-    @DeleteMapping(value = "/deleteAll")
-    void deleteAll(@RequestHeader("Cookie") String cookie);
+    LessonDTO delete(@PathVariable("id") String id);
 
 }
