@@ -8,4 +8,6 @@ import lombok.Setter;
 public class ClassroomDTO extends AbstractDTO {
 
     private String number;
+
+    private int capacity;
 }
