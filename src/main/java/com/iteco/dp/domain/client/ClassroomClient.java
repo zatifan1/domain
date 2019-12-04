@@ -1,28 +1,27 @@
 package com.iteco.dp.domain.client;
 
-import com.iteco.dp.domain.dto.CandidateDTO;
+import com.iteco.dp.domain.dto.ClassroomDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient("candidate")
-@RequestMapping(value = "/candidate")
-public interface CandidateClient {
+@FeignClient("classroom")
+@RequestMapping(value = "/classroom")
+public interface ClassroomClient {
 
     @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
-    CandidateDTO create(@RequestBody CandidateDTO candidateDTO);
+    ClassroomDTO create(@RequestBody ClassroomDTO classroomDTO);
 
     @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
-    CandidateDTO update(@RequestBody CandidateDTO candidateDTO);
+    ClassroomDTO update(@RequestBody ClassroomDTO classroomDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
-    CandidateDTO findById(@PathVariable("id") String id);
+    ClassroomDTO findById(@PathVariable("id") String id);
 
     @DeleteMapping(value = "/delete/{id}")
-    CandidateDTO deleteById(@PathVariable("id") String id);
+    ClassroomDTO deleteById(@PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
-    List<CandidateDTO> findAll();
-
+    List<ClassroomDTO> findAll();
 }
