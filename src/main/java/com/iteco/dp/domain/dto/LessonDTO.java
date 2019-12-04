@@ -17,7 +17,10 @@ public class LessonDTO extends AbstractDTO {
     @Nullable
     private String description;
 
-    @NotNull
-    private URL sourceUrl;
+    @Nullable
+    private String sourceUrl;
+
+    @Nullable
+    private CourseDTO courseDTO;
 
 }
