@@ -15,6 +15,7 @@ import org.unitils.reflectionassert.ReflectionAssert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -117,8 +118,8 @@ public class LessonClientTest {
     @NotNull
     private UserDTO getUserDTO(@NotNull String login) {
         UserDTO userDTO = new UserDTO();
-        userDTO.setLogin(login);
-        userDTO.setPassword("");
+        userDTO.setLogin("login" + new Random().nextInt());
+        userDTO.setPassword("" + new Random().nextInt());
         userClient.update(userDTO);
         return userDTO;
     }
