@@ -15,4 +15,7 @@ public class CourseDTO extends AbstractDTO {
 
     @Nullable
     private String description;
+
+    @Nullable
+    private String teacherId;
 }
