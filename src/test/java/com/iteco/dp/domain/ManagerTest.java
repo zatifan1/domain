@@ -1,6 +1,7 @@
 package com.iteco.dp.domain;
 
 import com.iteco.dp.domain.client.ManagerClient;
+import com.iteco.dp.domain.client.UserClient;
 import com.iteco.dp.domain.dto.ManagerDTO;
 import com.iteco.dp.domain.dto.PersonDTO;
 import com.iteco.dp.domain.dto.UserDTO;
@@ -14,43 +15,38 @@ import org.junit.runners.JUnit4;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @RunWith(JUnit4.class)
 public class ManagerTest {
 
     private ManagerClient managerClient;
+    private UserClient userClient;
 
     @Before
     public void setup(){
         managerClient = AuthResourceClient.getManagerInstance("http://localhost:8080//api");
+        userClient = AuthResourceClient.getUserInstance("http://localhost:8080//api");
+    }
+
+    @Test
+    public void findAllUser() {
+        List<UserDTO> all = userClient.findAll();
+        for (UserDTO userDTO : all) {
+            System.out.println(userDTO.getLogin());
+        }
     }
 
     @Test
     public void createManager() {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId("1");
-        userDTO.setLogin("manager1");
-        userDTO.setPassword("manager1");
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.setId("2");
-        personDTO.setBirthDate(new Date());
-        personDTO.setEmail("email");
-        personDTO.setFirstName("zatifan");
-        personDTO.setLastName("zatifan");
-        personDTO.setPhone("123456");
-        personDTO.setUserDTO(userDTO);
-        personDTO.setSex(Sex.MALE);
-        ManagerDTO managerDTO = new ManagerDTO();
-        managerDTO.setId("3");
-        managerDTO.setPersonDTO(personDTO);
-        ManagerDTO managerDTO1 = managerClient.create(managerDTO);
+        ManagerDTO managerDTO1 = managerClient.create(getManagerDTO());
         Assert.assertNotNull(managerDTO1);
     }
 
     @Test
     public void findByIdManager(){
-        ManagerDTO managerDTO = managerClient.findById("3");
+        ManagerDTO managerDTO = managerClient.findById("4c2897cc-c378-485b-8503-6ad25bd335c0");
         Assert.assertNotNull(managerDTO);
     }
 
@@ -86,7 +82,23 @@ public class ManagerTest {
 
     @Test
     public void deleteManager() {
-        ManagerDTO managerDTO = managerClient.deleteById("3");
+        ManagerDTO managerDTO = managerClient.deleteById("4");
         Assert.assertNull(managerDTO);
+    }
+
+    private ManagerDTO getManagerDTO() {
+        ManagerDTO managerDTO = new ManagerDTO();
+        PersonDTO personDTO = new PersonDTO();
+        UserDTO userDTO = new UserDTO();
+        userDTO.setLogin("login" + new Random().nextInt());
+        userDTO.setPassword("" + new Random().nextInt());
+        personDTO.setFirstName("firstName" + new Random().nextInt());
+        personDTO.setLastName("lastName" + new Random().nextInt());
+        personDTO.setEmail("email@" + new Random().nextInt());
+        personDTO.setPhone("" + new Random().nextInt());
+        personDTO.setSex(Sex.MALE);
+        personDTO.setUserDTO(userDTO);
+        managerDTO.setPersonDTO(personDTO);
+        return managerDTO;
     }
 }

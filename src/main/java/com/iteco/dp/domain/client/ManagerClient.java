@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient("manager")
-@RequestMapping(value = "/manager")
+@RequestMapping(value = "manager")
 public interface ManagerClient {
 
     @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
