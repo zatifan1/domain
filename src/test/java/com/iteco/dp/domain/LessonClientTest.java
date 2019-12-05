@@ -44,7 +44,7 @@ public class LessonClientTest {
 
     @After
     public void tearDown() {
-        testLessons.forEach(e -> lessonClient.delete(e.getId()));
+        testLessons.forEach(e -> lessonClient.deleteById(e.getId()));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class LessonClientTest {
     public void deleteLesson() {
         @NotNull final LessonDTO lessonDTO = getLessonDTO();
         lessonClient.create(lessonDTO);
-        lessonClient.delete(lessonDTO.getId());
+        lessonClient.deleteById(lessonDTO.getId());
         Assert.assertNull(lessonClient.findById(lessonDTO.getId()));
     }
 
@@ -119,7 +119,7 @@ public class LessonClientTest {
         UserDTO userDTO = new UserDTO();
         userDTO.setLogin(login);
         userDTO.setPassword("");
-        userClient.merge(userDTO);
+        userClient.update(userDTO);
         return userDTO;
     }
 }

@@ -10,19 +10,19 @@ import java.util.List;
 @RequestMapping(value = "/user")
 public interface UserClient {
 
-    @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    void merge(@RequestBody UserDTO userDTO);
+    @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
+    UserDTO create(@RequestBody UserDTO userDTO);
+
+    @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
+    UserDTO update(@RequestBody UserDTO userDTO);
 
     @GetMapping(value = "/find/{id}", consumes = "application/json")
     UserDTO findById(@PathVariable("id") String id);
 
-    @DeleteMapping(value = "/remove/{id}")
-    void remove(@PathVariable("id") String id);
+    @DeleteMapping(value = "/remove/{id}", consumes = "application/json")
+    UserDTO deleteById(@PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
     List<UserDTO> findAll();
-
-    @PutMapping(value = "/mergeAll", produces = "application/json")
-    void mergeAll(List<UserDTO> userDTOList);
 
 }

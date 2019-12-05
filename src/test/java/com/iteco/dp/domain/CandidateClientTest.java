@@ -90,7 +90,7 @@ public class CandidateClientTest {
         UserDTO userDTO = new UserDTO();
         userDTO.setLogin("login" + new Random().nextInt());
         userDTO.setPassword("" + new Random().nextInt());
-        userClient.merge(userDTO);
+        userClient.update(userDTO);
 
         PersonDTO personDTO = new PersonDTO();
         personDTO.setFirstName("firstName" + new Random().nextInt());

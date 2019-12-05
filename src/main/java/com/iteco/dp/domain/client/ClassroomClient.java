@@ -19,7 +19,7 @@ public interface ClassroomClient {
     @GetMapping(value = "/find/{id}", consumes = "application/json")
     ClassroomDTO findById(@PathVariable("id") String id);
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
     ClassroomDTO deleteById(@PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")

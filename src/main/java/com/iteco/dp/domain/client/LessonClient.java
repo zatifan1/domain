@@ -23,6 +23,6 @@ public interface LessonClient {
     LessonDTO update(@RequestBody LessonDTO lessonDTO);
 
     @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
-    LessonDTO delete(@PathVariable("id") String id);
+    LessonDTO deleteById(@PathVariable("id") String id);
 
 }

@@ -9,18 +9,18 @@ import java.util.List;
 @RequestMapping(value = "/person")
 public interface PersonClient {
 
-    @GetMapping("/findAll")
+    @GetMapping(value = "/findAll", consumes = "application/json")
     List<PersonDTO> findAll();
 
-    @GetMapping("/find/{id}")
-    PersonDTO findOne(@PathVariable final String id);
+    @GetMapping(value = "/find/{id}", consumes = "application/json")
+    PersonDTO findById(@PathVariable final String id);
 
-    @PutMapping("/create")
+    @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
     PersonDTO create(@RequestBody final PersonDTO personDTO);
 
-    @PutMapping("/update")
+    @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
     PersonDTO update(@RequestBody final PersonDTO personDTO);
 
-    @DeleteMapping("/delete/{id}")
-    PersonDTO delete(@PathVariable final String id);
+    @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
+    PersonDTO deleteById(@PathVariable final String id);
 }

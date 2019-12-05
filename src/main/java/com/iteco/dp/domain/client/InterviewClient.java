@@ -10,13 +10,13 @@ import java.util.List;
 @RequestMapping(value = "/interview")
 public interface InterviewClient {
 
-    @PutMapping(value = "/merge", produces = "application/json", consumes = "application/json")
-    InterviewDTO merge(@RequestBody InterviewDTO interviewDTO);
+    @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
+    InterviewDTO update(@RequestBody InterviewDTO interviewDTO);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
     List<InterviewDTO> findAll();
 
-    @DeleteMapping(value = "/remove/{id}")
-    void remove(@PathVariable("id") String id);
+    @DeleteMapping(value = "/delete/{id}")
+    void deleteById(@PathVariable("id") String id);
 
 }

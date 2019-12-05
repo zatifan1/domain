@@ -9,18 +9,18 @@ import java.util.List;
 @RequestMapping(value = "/stream")
 public interface StreamClient {
 
-    @GetMapping(value = "/findAll")
+    @GetMapping(value = "/findAll", consumes = "application/json")
     List<StreamDTO> findAll();
 
-    @GetMapping(value = "/find/{id}")
+    @GetMapping(value = "/find/{id}", consumes = "application/json")
     StreamDTO findById(@PathVariable final String id);
 
-    @PutMapping(value = "/create")
+    @PutMapping(value = "/create", produces = "application/json", consumes = "application/json")
     StreamDTO create(@RequestBody final StreamDTO streamDTO);
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update", produces = "application/json", consumes = "application/json")
     StreamDTO update(@RequestBody final StreamDTO streamDTO);
 
-    @DeleteMapping(value = "/delete/{id}")
-    StreamDTO delete(@PathVariable final String id);
+    @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
+    StreamDTO deleteById(@PathVariable final String id);
 }
