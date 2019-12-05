@@ -79,4 +79,12 @@ public class AuthResourceClient {
                 .decoder(new JacksonDecoder())
                 .target(CourseClient.class, baseUrl);
     }
+
+    public static StreamClient getStreamInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(StreamClient.class, baseUrl);
+    }
 }
