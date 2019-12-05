@@ -16,7 +16,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <github.global.server>github</github.global.server>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-        <!--<spring-cloud.version>Finchley.SR2</spring-cloud.version>-->
     </properties>
 
     <parent>
@@ -48,26 +47,11 @@
             <artifactId>feign-gson</artifactId>
             <version>10.4.0</version>
         </dependency>
-
-        <!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--        </dependency>-->
         <!-- Содержит в себе необходимые библиотеки для тестирования -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
-        <!-- JSON -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-json</artifactId>-->
-<!--        </dependency>-->
-        <!-- LOMBOK -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -79,23 +63,21 @@
             <artifactId>annotations</artifactId>
             <version>17.0.0</version>
         </dependency>
-        <!-- Feign -->
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.netflix.feign/feign-jackson &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.netflix.feign</groupId>-->
-            <!--<artifactId>feign-jackson</artifactId>-->
-            <!--<version>8.18.0</version>-->
-        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-core</artifactId>
+            <version>3.4.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

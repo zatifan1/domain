@@ -1,4 +1,4 @@
-package com.iteco.dp.domain.enumeration;
+package com.iteco.dp.domain.enumerated;
 
 public enum RoleType {
     STUDENT,

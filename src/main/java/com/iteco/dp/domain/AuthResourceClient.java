@@ -56,4 +56,27 @@ public class AuthResourceClient {
                 .target(ClassroomClient.class, baseUrl);
     }
 
+    public static LessonClient getLessonInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new GsonEncoder())
+                .decoder(new GsonDecoder())
+                .target(LessonClient.class, baseUrl);
+    }
+
+    public static PersonClient getPersonInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new GsonEncoder())
+                .decoder(new GsonDecoder())
+                .target(PersonClient.class, baseUrl);
+    }
+
+    public static CourseClient getCourseInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new GsonEncoder())
+                .decoder(new GsonDecoder())
+                .target(CourseClient.class, baseUrl);
+    }
 }

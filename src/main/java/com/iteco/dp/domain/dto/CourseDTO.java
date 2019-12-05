@@ -5,11 +5,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-public class AbstractUserDTO extends AbstractDTO {
+public class CourseDTO extends AbstractDTO {
 
     @Nullable
-    private String personId;
+    private String name;
+
+    @Nullable
+    private String description;
+
+    @Nullable
+    private String teacherId;
 }

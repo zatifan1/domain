@@ -5,11 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
-public class AbstractUserDTO extends AbstractDTO {
+public class StreamDTO extends AbstractDTO {
 
     @Nullable
-    private String personId;
+    private String courseId;
+
+    @Nullable
+    private Date startDate;
+
+    @Nullable
+    private Date finishDate;
 }
