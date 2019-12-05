@@ -157,12 +157,12 @@
         <repository>
             <id>gitlab-releases</id>
             <name>Gitlab releases</name>
-            <url>git:releases://https://gitlab.com/volnenko.school/dp/domain.git</url>
+            <url>git:mvn-repo://https://gitlab.com/AV-Buzanov/test_domain</url>
         </repository>
         <snapshotRepository>
             <id>gitlab-snapshots</id>
             <name>Gitlab snapshots</name>
-            <url>git:snapshots://https://gitlab.com/volnenko.school/dp/domain.git</url>
+            <url>git:mvn-repo://https://gitlab.com/AV-Buzanov/test_domain</url>
         </snapshotRepository>
     </distributionManagement>
 
