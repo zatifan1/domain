@@ -1,10 +1,12 @@
 package com.iteco.dp.domain;
 
 import com.iteco.dp.domain.client.CandidateClient;
+import com.iteco.dp.domain.client.PersonClient;
+import com.iteco.dp.domain.client.UserClient;
 import com.iteco.dp.domain.dto.CandidateDTO;
 import com.iteco.dp.domain.dto.PersonDTO;
 import com.iteco.dp.domain.dto.UserDTO;
-import com.iteco.dp.domain.enumeration.Sex;
+import com.iteco.dp.domain.enumerated.Sex;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.junit.After;
@@ -27,11 +29,17 @@ public class CandidateClientTest {
 
     private CandidateClient candidateClient;
 
+    private UserClient userClient;
+
+    private PersonClient personClient;
+
     private List<CandidateDTO> testCandidates = new ArrayList<>();
 
     @Before
     public void setup() {
         candidateClient = AuthResourceClient.getCandidateInstance("http://localhost:8080//api");
+        userClient = AuthResourceClient.getUserInstance("http://localhost:8080//api");
+        personClient = AuthResourceClient.getPersonInstance("http://localhost:8080//api");
     }
 
     @After
@@ -64,7 +72,8 @@ public class CandidateClientTest {
         @NotNull final CandidateDTO candidateDTO = getCandidateDTO();
         testCandidates.add(candidateDTO);
         candidateClient.create(candidateDTO);
-        candidateDTO.getPersonDTO().setFirstName("UPDATED");
+        //TODO добавить изменения
+//        candidateDTO.getPersonDTO().setFirstName("UPDATED");
         candidateClient.update(candidateDTO);
         ReflectionAssert.assertReflectionEquals(candidateDTO, candidateClient.findById(candidateDTO.getId()));
     }
@@ -78,19 +87,22 @@ public class CandidateClientTest {
     }
 
     private CandidateDTO getCandidateDTO() {
-        @NotNull final UserDTO userDTO = new UserDTO();
-        userDTO.setLogin("" + new Random().nextInt());
-        userDTO.setPassword("manager1" + new Random().nextInt());
-        @NotNull final PersonDTO personDTO = new PersonDTO();
-        personDTO.setBirthDate(new Date());
-        personDTO.setEmail("email" + new Random().nextInt());
-        personDTO.setFirstName("zatifan1" + new Random().nextInt());
-        personDTO.setLastName("zatifan1" + new Random().nextInt());
-        personDTO.setPhone("123456" + new Random().nextInt());
-        personDTO.setUserDTO(userDTO);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setLogin("login" + new Random().nextInt());
+        userDTO.setPassword("" + new Random().nextInt());
+        userClient.merge(userDTO);
+
+        PersonDTO personDTO = new PersonDTO();
+        personDTO.setFirstName("firstName" + new Random().nextInt());
+        personDTO.setLastName("lastName" + new Random().nextInt());
+        personDTO.setEmail("email@" + new Random().nextInt());
+        personDTO.setPhone("" + new Random().nextInt());
         personDTO.setSex(Sex.MALE);
+        personDTO.setUserId(userDTO.getId());
+        personClient.create(personDTO);
+
         CandidateDTO candidateDTO = new CandidateDTO();
-        candidateDTO.setPersonDTO(personDTO);
+        candidateDTO.setPersonId(personDTO.getId());
         return candidateDTO;
     }
 }

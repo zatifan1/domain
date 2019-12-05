@@ -11,6 +11,5 @@ import org.jetbrains.annotations.Nullable;
 public class AbstractUserDTO extends AbstractDTO {
 
     @Nullable
-    private PersonDTO personDTO;
-
+    private String personId;
 }

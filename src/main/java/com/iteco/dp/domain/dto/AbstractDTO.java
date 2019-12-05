@@ -4,14 +4,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class AbstractDTO {
+public abstract class AbstractDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @NotNull
     private String id = UUID.randomUUID().toString();

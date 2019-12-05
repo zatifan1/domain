@@ -5,17 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
 
-@Setter
+import java.util.Date;
+
 @Getter
+@Setter
 @NoArgsConstructor
-public class CourseDTO extends AbstractDTO {
+public class StreamDTO extends AbstractDTO {
 
     @Nullable
-    private String name;
+    private String courseId;
 
     @Nullable
-    private String description;
+    private Date startDate;
 
     @Nullable
-    private String teacherId;
+    private Date finishDate;
 }

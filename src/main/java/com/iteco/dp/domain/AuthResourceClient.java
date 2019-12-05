@@ -64,4 +64,19 @@ public class AuthResourceClient {
                 .target(LessonClient.class, baseUrl);
     }
 
+    public static PersonClient getPersonInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(PersonClient.class, baseUrl);
+    }
+
+    public static CourseClient getCourseInstance(final String baseUrl) {
+        return Feign.builder()
+                .contract(new SpringMvcContract())
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .target(CourseClient.class, baseUrl);
+    }
 }

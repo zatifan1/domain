@@ -1,14 +1,14 @@
 package com.iteco.dp.domain.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.net.URL;
-
 @Getter
 @Setter
+@NoArgsConstructor
 public class LessonDTO extends AbstractDTO {
 
     @NotNull
@@ -21,6 +21,6 @@ public class LessonDTO extends AbstractDTO {
     private String sourceUrl;
 
     @Nullable
-    private CourseDTO courseDTO;
+    private String courseId;
 
 }
