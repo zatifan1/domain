@@ -19,7 +19,7 @@ public interface UserClient {
     @GetMapping(value = "/find/{id}", consumes = "application/json")
     UserDTO findById(@PathVariable("id") String id);
 
-    @DeleteMapping(value = "/remove/{id}", consumes = "application/json")
+    @DeleteMapping(value = "/delete/{id}", consumes = "application/json")
     UserDTO deleteById(@PathVariable("id") String id);
 
     @GetMapping(value = "/findAll", consumes = "application/json")
