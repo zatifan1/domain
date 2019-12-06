@@ -1,11 +1,12 @@
 package com.iteco.dp.domain.client;
 
 import com.iteco.dp.domain.dto.PersonDTO;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@FeignClient("person")
 @RequestMapping(value = "/person")
 public interface PersonClient {
 

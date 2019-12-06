@@ -54,6 +54,13 @@
             <artifactId>feign-gson</artifactId>
             <version>10.4.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.netflix.feign/feign-jackson -->
+        <dependency>
+            <groupId>com.netflix.feign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>8.18.0</version>
+        </dependency>
+
         <!-- Содержит в себе необходимые библиотеки для тестирования -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -10,4 +10,7 @@ public class StudentDTO extends AbstractUserDTO {
     private String classroomId;
 
     private String teacherId;
+
+    private String streamId;
+
 }
