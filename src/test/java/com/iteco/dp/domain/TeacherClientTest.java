@@ -15,6 +15,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.unitils.reflectionassert.ReflectionAssert;
 
 import java.util.ArrayList;
@@ -23,24 +27,21 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-@Slf4j
-@RunWith(JUnit4.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = App.class)
+@TestPropertySource(locations = "classpath:application.yml")
 public class TeacherClientTest {
 
+    @Autowired
     private TeacherClient teacherClient;
 
+    @Autowired
     private UserClient userClient;
 
+    @Autowired
     private PersonClient personClient;
 
     private List<TeacherDTO> testTeachers = new ArrayList<>();
-
-    @Before
-    public void setup() {
-        teacherClient = AuthResourceClient.getTeacherInstance("http://localhost:8080//api");
-        userClient = AuthResourceClient.getUserInstance("http://localhost:8080//api");
-        personClient = AuthResourceClient.getPersonInstance("http://localhost:8080//api");
-    }
 
     @After
     public void tearDown() {

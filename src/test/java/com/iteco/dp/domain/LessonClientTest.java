@@ -11,6 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.unitils.reflectionassert.ReflectionAssert;
 
 import java.util.ArrayList;
@@ -18,30 +22,27 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-@Slf4j
-@RunWith(JUnit4.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = App.class)
+@TestPropertySource(locations = "classpath:application.yml")
 public class LessonClientTest {
 
+    @Autowired
     private LessonClient lessonClient;
 
+    @Autowired
     private UserClient userClient;
 
+    @Autowired
     private PersonClient personClient;
 
+    @Autowired
     private TeacherClient teacherClient;
 
+    @Autowired
     private CourseClient courseClient;
 
     private List<LessonDTO> testLessons = new ArrayList<>();
-
-    @Before
-    public void setup() {
-        lessonClient = AuthResourceClient.getLessonInstance("http://localhost:8080//api");
-        userClient = AuthResourceClient.getUserInstance("http://localhost:8080//api");
-        personClient = AuthResourceClient.getPersonInstance("http://localhost:8080//api");
-        teacherClient = AuthResourceClient.getTeacherInstance("http://localhost:8080//api");
-        courseClient = AuthResourceClient.getCourseInstance("http://localhost:8080//api");
-    }
 
     @After
     public void tearDown() {
