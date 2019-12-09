@@ -4,96 +4,114 @@ import com.iteco.dp.domain.client.*;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.support.SpringMvcContract;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class AuthResourceClient {
 
-    public static ManagerClient getManagerInstance(final String baseUrl) {
+    @Value("${address}")
+    String address;
+
+    @Bean
+    public ManagerClient getManagerClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(ManagerClient.class, baseUrl);
+                .target(ManagerClient.class, address);
     }
 
-    public static UserClient getUserInstance(final String baseUrl) {
+    @Bean
+    public UserClient getUserClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(UserClient.class, baseUrl);
+                .target(UserClient.class, address);
     }
 
-    public static CandidateClient getCandidateInstance(final String baseUrl) {
+    @Bean
+    public CandidateClient getCandidateClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(CandidateClient.class, baseUrl);
+                .target(CandidateClient.class, address);
     }
 
-    public static InterviewClient getInterviewInstance(final String baseUrl) {
+    @Bean
+    public InterviewClient getInterviewClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(InterviewClient.class, baseUrl);
+                .target(InterviewClient.class, address);
     }
 
-    public static TeacherClient getTeacherInstance(final String baseUrl) {
+    @Bean
+    public TeacherClient getTeacherClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(TeacherClient.class, baseUrl);
+                .target(TeacherClient.class, address);
     }
 
-    public static ClassroomClient getClassroomInstance(final String baseUrl) {
+    @Bean
+    public ClassroomClient getClassroomClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(ClassroomClient.class, baseUrl);
+                .target(ClassroomClient.class, address);
     }
 
-    public static LessonClient getLessonInstance(final String baseUrl) {
+    @Bean
+    public LessonClient getLessonClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(LessonClient.class, baseUrl);
+                .target(LessonClient.class, address);
     }
 
-    public static PersonClient getPersonInstance(final String baseUrl) {
+    @Bean
+    public PersonClient getPersonClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(PersonClient.class, baseUrl);
+                .target(PersonClient.class, address);
     }
 
-    public static CourseClient getCourseInstance(final String baseUrl) {
+    @Bean
+    public CourseClient getCourseClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(CourseClient.class, baseUrl);
+                .target(CourseClient.class, address);
     }
 
-    public static StreamClient getStreamInstance(final String baseUrl) {
+    @Bean
+    public StreamClient getStreamClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(StreamClient.class, baseUrl);
+                .target(StreamClient.class, address);
     }
 
-    public static StudentClient getStudentInstance(final String baseUrl) {
+    @Bean
+    public StudentClient getStudentClient() {
         return Feign.builder()
                 .contract(new SpringMvcContract())
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
-                .target(StudentClient.class, baseUrl);
+                .target(StudentClient.class, address);
     }
 
 //    public static <T> T createClient(Class<T> type, String uri) {
